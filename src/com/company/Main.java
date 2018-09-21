@@ -11,28 +11,17 @@ public class Main {
     static final double DX = 215;
     static int[][] a = new int [0][9];
     static int[][] b = new int [0][2];
-    static char[][] board = new char[3][3];
+
+    static int boardXSize = 5;
+    static int boardYSize = 5;
+    static char[][] board = new char[boardXSize][boardYSize];
+
     public static void main(String[] args){
         //doSort();
         //System.out.println(rotateRight("cserfdas", 78));
         //System.out.println(arraySameSize(a, b));
         //System.out.println(convert(name));
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                int rit = ThreadLocalRandom.current().nextInt(0,3);
-                char c;
-                if(rit == 1) {
-                    c = '0';
-                } else if (rit == 2) {
-                    c = 'X';
-                } else {
-                    c = '.';
-                }
-                board[i][j] = c;
-                System.out.print(c);
-            }
-            System.out.println();
-        }
+        board = generateBoard();
         System.out.println(checkBoard(board));
     }
     private static void addNumber(){
@@ -197,4 +186,25 @@ public class Main {
         }
         return '.';
     }
+    public static char[][] generateBoard(){
+        char[][] gBoard =  new char[boardXSize][boardYSize];
+        for (int i = 0; i < gBoard.length; i++) {
+            for (int j = 0; j < gBoard[i].length; j++) {
+                int rit = ThreadLocalRandom.current().nextInt(0,3);
+                char c;
+                if(rit == 1) {
+                    c = '0';
+                } else if (rit == 2) {
+                    c = 'X';
+                } else {
+                    c = '.';
+                }
+                gBoard[i][j] = c;
+                System.out.print(c);
+            }
+            System.out.println();
+        }
+        return gBoard;
+    }
+
 }
